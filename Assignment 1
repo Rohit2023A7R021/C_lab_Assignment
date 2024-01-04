@@ -1,0 +1,41 @@
+//WRITE A PROGRAM TO SELECT THE BEST PRODUCT FROM THE OFFER.
+#include <stdio.h>
+void selectProducts(int n,float discounts[],float minDiscount,float maxDiscount) 
+{
+    printf("Selected Products:\n");
+    for(int i=0;i<n;i++) 
+    {
+        if(discounts[i]>=minDiscount&&discounts[i]<=maxDiscount) 
+        {
+            printf("Product%d:%.2f%%discount\n",i+1,discounts[i]);
+        }
+    }
+}
+int main() 
+{
+    int n;
+    printf("Enter the number of products:");
+    scanf("%d",&n);
+    if(n<=0) 
+    {
+        printf("Invalid input.Number of products should be greater than 0.\n");
+        return 1;
+    }
+    float discounts[n];
+    printf("Enter the discounts for each product:\n");
+    for (int i=0;i<n;i++) 
+    {
+        printf("Product%d:",i+1);
+        scanf("%f",&discounts[i]);
+    }
+    float minDiscount,maxDiscount;
+    printf("Enter Mr. Ravi's specified discount range (min max):");
+    scanf("%f%f",&minDiscount,&maxDiscount);
+    if (minDiscount<0||maxDiscount>100||minDiscount>maxDiscount) 
+    {
+        printf("Invalid input.Please enter valid discount range(0to100) and min <=max.\n");
+        return 1;
+    }
+    selectProducts(n,discounts,minDiscount,maxDiscount);
+    return 0;
+}
